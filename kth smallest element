@@ -1,0 +1,9 @@
+link -https://practice.geeksforgeeks.org/problems/kth-smallest-element5635/1#
+code
+
+int kthsmaalestelement(int arr[],int l, int r,int k)
+{
+   sort(arr,arr+r-l+1)
+   retrun arr[k-1];
+ }
+ //driver code
