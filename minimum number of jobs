@@ -1,0 +1,30 @@
+link - https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1#
+code
+
+int minJumps(int arr[], int n)
+{
+    // Your code here
+
+    if(n <= 1) 
+        return 0;
+    if(arr[0] == 0) 
+        return -1;
+    int ladder = arr[0];
+    int step = arr[0];
+    int jump = 1;
+    for(int level=1; level < n;++level)
+    {
+        if(level == n - 1) 
+            return jump;
+        if(level+arr[level] > ladder)
+            ladder = level + arr[level];
+        step--;
+        if(step == 0)
+        {
+            jump++;
+            step = ladder - level;
+            if(step == 0) return -1;
+        }
+    }
+    return jump;
+}
