@@ -1,0 +1,23 @@
+link = https://leetcode.com/problems/find-the-duplicate-number/submissions/
+code
+
+int findDuplicate(vector<int>& nums)
+    {
+        
+        int turtoise=nums[0],hare=nums[0];
+        while(true)
+        {
+            turtoise=nums[turtoise];
+            hare=nums[nums[hare]];
+            if(turtoise==hare)
+                break;
+            
+        }
+        turtoise=nums[0];
+        while(turtoise!=hare)
+        {
+            hare=nums[hare];
+            turtoise=nums[turtoise];
+        }
+        return hare;
+    }
