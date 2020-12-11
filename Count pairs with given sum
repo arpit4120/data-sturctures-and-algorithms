@@ -1,0 +1,52 @@
+link - https://practice.geeksforgeeks.org/problems/count-pairs-with-given-sum5022/1#
+
+code -
+1. simple way  complexity -O(n^2)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n;
+	cin>>n;
+	int a[n];
+	for( int i=0;i<n;i++)
+	{
+		cin>>a[i];
+	}
+	int k;
+	cin>>k;
+	int t=0;
+	for( int i=0;i<n-1;i++)
+	{
+		    for( int j=i+1;j<n;j++)
+		    {
+		    	if(a[i]+a[j]==k)
+		    		t++;
+		    }
+	 }
+	return t;
+}
+2. using the map complxity O(n)
+
+  int getPairsCount(int arr[], int n, int k) 
+    {
+        unordered_map<int, int> m; 
+  
+         for (int i=0; i<n; i++) 
+                m[arr[i]]++; 
+  
+        int twice_count = 0; 
+  
+        for (int i=0; i<n; i++) 
+        { 
+            twice_count += m[k-arr[i]]; 
+  
+              if (k-arr[i] == arr[i]) 
+                    twice_count--; 
+        } 
+  
+     
+        return twice_count/2; 
+    }
