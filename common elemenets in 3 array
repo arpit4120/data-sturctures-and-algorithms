@@ -1,0 +1,84 @@
+link-https://practice.geeksforgeeks.org/problems/common-elements1132/1
+code 
+1. submited
+int i=0,j=0,k=0;
+            vector<int> z;
+            while(i<n1&&j<n2&&k<n3)
+            {
+                if(a[i]==b[j]&&b[j]==c[k])
+                {
+                    z.push_back(a[i]);
+                    i++;k++;j++;
+                }
+                else if(a[i]<b[j])
+                {
+                    i++;
+                }
+                else if(b[j]<c[k])
+                {
+                    j++;
+                }
+                else
+                    k++;
+                int x=a[i-1];
+                while(a[i]==x)i++;
+                x=b[j-1];
+                while(b[j]==x)j++;
+                x=c[k-1];
+                while(c[k]==x)k++;
+            }
+            return z;
+     2. alternate way
+     #include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n,m,l;
+	cin>>n>>m>>l;
+	int a[n],b[m],c[l];
+	for( int i=0;i<n;i++)
+		cin>>a[i];
+	for( int i=0;i<m;i++)
+		cin>>b[i];
+	for(int i=0;i<l;i++)
+		cin>>c[i];
+            int k=n>m?m:n;
+	k=k>l?l:k;
+	vector<int> z; 
+	sort(a,a+n);
+	sort(b,b+m);
+	sort(c,c+l);
+
+	if(k==n)
+	{
+		
+		for( int i=0;i<k;i++)
+		{
+			if(binary_search(b, b+m, a[i])&&binary_search(c, c + l, a[i]))
+				z.push_back(a[i]);
+		}
+	}
+	else if(k==m)
+	{
+		
+			for( int i=0;i<k;i++)
+		{
+			
+			if((binary_search(a, a+n, b[i])==1)&&(binary_search(c, c + l, b[i])==1))
+				z.push_back(b[i]);
+		}
+		
+	}
+	else
+	{
+		
+			for( int i=0;i<k;i++)
+		{
+			if(binary_search(a, a+n, c[i])&&binary_search(b, b+ m, c[i]))
+				z.push_back(c[i]);
+		}
+		
+	}
+  return z;//output to be change as per question
+}
