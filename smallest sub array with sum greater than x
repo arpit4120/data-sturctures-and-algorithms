@@ -1,0 +1,37 @@
+link- https://practice.geeksforgeeks.org/problems/smallest-subarray-with-sum-greater-than-x/0
+code
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+ {
+    int t;
+   cin>>t;
+    while(t--)
+    {
+        int n, s;
+        cin>>n>>s;
+        int arr[n];
+        for(int i = 0; i < n; i++)
+            cin>>arr[i];
+        int sum = 0;
+        int start = 0, end = 0, res = INT_MAX;
+ 
+        while(end != n)
+        {
+            sum += arr[end++];
+            bool flag = false;
+            while(sum >= s)
+            {
+                if(sum > s)
+                    flag = true;
+                sum -= arr[start];
+                res = min(res, end-start);
+                start++;
+                if(sum == s && flag)
+                    break;
+            }
+        }
+        cout<<res<<endl;
+    }
+	return 0;
+}
