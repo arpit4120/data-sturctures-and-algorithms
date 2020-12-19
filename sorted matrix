@@ -1,0 +1,27 @@
+link-https://practice.geeksforgeeks.org/problems/sorted-matrix/0
+code
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n;
+	    cin>>n;
+	    int a[n*n];
+	    for(int i=0;i<n*n;i++)
+	    {
+	        cin>>a[i];
+	    }
+	    sort(a,a+n*n);
+	    for(int i=0;i<n*n;i++)
+	    {
+	        cout<<a[i]<<" ";
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}
