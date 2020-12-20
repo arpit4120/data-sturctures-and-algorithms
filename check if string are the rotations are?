@@ -1,0 +1,18 @@
+link-https://www.geeksforgeeks.org/a-program-to-check-if-strings-are-rotations-of-each-other/
+code
+#include<bits/stdc++.h>
+using namespace std;
+ int main()
+ {
+ 	string a,b;
+ 	getline(cin,a);
+	getline(cin,b);
+	string c=a+a;
+	if(c.find(b)==true)
+	{
+		cout<<"yes";
+		return 0;
+	}
+	cout<<"no";
+	return 0;
+ }
