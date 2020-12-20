@@ -1,0 +1,50 @@
+link-https://practice.geeksforgeeks.org/problems/longest-repeating-subsequence/0#
+code
+#include<bits/stdc++.h>
+using namespace std;
+void lrsc(string s)
+{
+	string a=s;
+	string b=s;
+	int n=s.size();
+	int z[n+1][n+1];
+	for(int i=0;i<=n;i++)
+	{
+		z[i][0]=0;
+	}
+	for(int i=1;i<=n;i++)
+	{
+		z[0][i]=0;
+	}
+	for(int i=1;i<=n;i++)
+	{
+		for(int j=1;j<=n;j++)
+		{
+			if(a[i-1]==b[j-1]&&i!=j)
+			{
+				z[i][j]=z[i-1][j-1]+1;
+				
+			}
+			else
+			{
+				z[i][j]=max(z[i-1][j],z[i][j-1]);
+			}
+			
+		}
+	}
+	cout<<z[n][n];
+}
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		int n;
+		cin>>n;
+		string s;
+		cin>>s;
+		lrsc(s);
+		cout<<endl;
+	}
+}
