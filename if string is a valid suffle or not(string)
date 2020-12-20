@@ -1,0 +1,38 @@
+link-https://www.programiz.com/java-programming/examples/check-valid-shuffle-of-strings
+code
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	string a,b,c;
+	getline(cin,a);
+	getline(cin,b);
+	getline(cin,c);
+	if(a.length()+b.length()!=c.length())
+	{
+		cout<<"No"<<endl;
+		return 0;
+	}
+	int i=0,j=0,k=0;
+	while(k<c.length())
+	{
+		if(c[k]==a[i])
+			i++;
+		else if(c[k]==b[j])
+			j++;
+		else
+		{
+			cout<<"No1";
+			return 0;
+		}
+		k++;
+	}
+	if(i<a.length()||j<b.length())
+	{
+		cout<<"No2";
+		return 0;
+	}
+	cout<<"Yes";
+	return 0;
+	
+}
