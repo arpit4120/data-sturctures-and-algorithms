@@ -1,0 +1,31 @@
+link-https://www.geeksforgeeks.org/print-subsequences-string/
+code
+#include<bits/stdc++.h>
+using namespace std;
+void subsequence(string s,int n,int index=-1,string c="")
+{
+	if(index==n)
+		return ;
+	if(!c.empty())
+		cout<<c<<endl;
+	for(int i=index+1;i<n;i++)
+	{
+		c+=s[i];
+		subsequence(s,n,i,c);
+		c=c.erase(c.size()-1);
+	}
+	return ;
+}
+void printallsubsequence(string s)
+{
+	subsequence(s,s.length());
+	cout<<"\n";
+}
+int main()
+{
+	string s;
+	cin>>s;
+	printallsubsequence(s);
+	return 0;
+	
+}
