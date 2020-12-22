@@ -1,0 +1,40 @@
+link-https://leetcode.com/problems/count-and-say/submissions/
+code
+#include <bits/stdc++.h>
+using namespace std;
+string countsay(int n)
+{
+	string cu="1";
+	while(n>1)
+	{
+		string temp="";
+		for(int i=0;i<cu.length();i++)
+		{
+			int c=0;
+			while(i<cu.length()&& cu[i]==cu[i+1])
+			{
+				c++;
+				i++;
+			}
+			temp += to_string(c+1)+cu[i];
+		}
+		cu=temp;
+		n--;
+		
+	}
+	return cu;
+}
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n;
+	    cin>>n;
+	    cout<<countsay(n)<<endl;
+	   
+	}
+	return 0;
+}
