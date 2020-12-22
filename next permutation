@@ -1,0 +1,51 @@
+link-https://practice.geeksforgeeks.org/problems/next-permutation/0
+code
+#include <bits/stdc++.h>
+using namespace std;
+void nextpermute(int a[],int n)
+{
+	int i;
+	
+	for( i=n-1;i>0;i--)
+	{
+		if(a[i]>a[i-1])
+			break;
+	}
+	if(i==0)
+	{
+		sort(a,a+n);
+		for(int i=0;i<n;i++)
+			cout<<a[i]<<" ";
+		return;
+	}
+	int x=a[i-1],smallest=i;
+	for(int j=i+1;j<n;j++)
+	{
+		if(x<a[j]&&a[j]<a[smallest])
+			smallest=j;
+	}
+	swap(a[i-1],a[smallest]);
+	sort(a+i,a+n);
+	for(int i=0;i<n;i++)
+		cout<<a[i]<<" ";
+	return ;
+	
+}
+
+int main() {
+	//code
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n;
+	    cin>>n;
+	    int a[n];
+	    for(int i=0;i<n;i++)
+	        cin>>a[i];
+	    nextpermute(a,n);
+	    cout<<"\n";
+	   
+	}
+	return 0;
+}
