@@ -1,0 +1,24 @@
+link-https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1
+code
+int dp[100][100];
+int funt(string s,int i,int j)
+{
+    if(i>j)
+        return 0;
+    if(i==j)
+        return 1;
+    if(dp[i][j]!=-1)
+        return dp[i][j];
+   if(s[i]==s[j])
+        return dp[i][j]=funt(s,i+1,j)+funt(s,i,j-1)+1;
+    else
+        return dp[i][j]=funt(s,i+1,j)+funt(s,i,j-1)-funt(s,i+1,j-1);
+}
+int countPS(string str)
+{
+   //Your code here
+   int n=str.length();
+   dp[n][n];
+   memset(dp,-1,sizeof(dp));
+   return funt(str,0,n-1);
+}
