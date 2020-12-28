@@ -1,0 +1,27 @@
+link-https://practice.geeksforgeeks.org/problems/longest-common-subsequence-1587115620/1#
+code
+int lcs(int x, int y, string s1, string s2){
+    
+    // your code here
+    int n[x+1][y+1];
+    for(int i=0;i<=x;i++)
+    {
+        for(int j=0;j<=y;j++)
+        {
+            if(i==0||j==0)
+                n[i][j]=0;
+            else
+            {
+                if(s1[i-1]==s2[j-1])
+                {
+                    n[i][j]=n[i-1][j-1]+1;
+                }
+                else
+                {
+                    n[i][j]=max(n[i-1][j],n[i][j-1]);
+                }
+            }
+        }
+    }
+    return n[x][y];
+}
