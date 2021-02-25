@@ -1,0 +1,17 @@
+link-https://practice.geeksforgeeks.org/problems/majority-element-1587115620/1#
+code
+    int majorityElement(int a[], int size)
+    {
+        
+        // your code here
+        unordered_map<int,int> m;
+        for(int i=0;i<size;i++)
+            m[a[i]]++;
+        for(auto x:m)
+        {
+            if(x.second>size/2)
+                return x.first;
+        }
+        return -1;
+        
+    }
