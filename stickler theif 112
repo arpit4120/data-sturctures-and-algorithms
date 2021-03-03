@@ -1,0 +1,33 @@
+link-https://practice.geeksforgeeks.org/problems/stickler-theif-1587115621/1
+code
+#include<bits/stdc++.h>
+using namespace std;
+int dp[10001];
+int solve(int i,int a[]){
+	if(i<=-1){
+		cout<<i<<endl;
+		return 0;
+	}
+	if(dp[i]!=-1)return dp[i];
+	int o1=a[i]+solve(i-2,a);
+	int o2=solve(i-1,a);
+	return dp[i]=max(o1,o2);
+}
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		int n;
+		cin>>n;
+		int a[n];
+		dp[n];
+		for(int i=0;i<n;i++)
+		{
+			cin>>a[i];
+		}
+		memset(dp,-1,sizeof(dp));
+		cout<<solve(n-1,a)<<endl;
+	}
+}
