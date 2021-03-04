@@ -1,0 +1,20 @@
+link-https://practice.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array1317/1#
+code
+int kthElement(int a[], int b[], int n, int m, int k)
+    {
+        int i=n-1;
+        int j=0;
+        while(i>=0&&j<m)
+        {
+            if(a[i]>=b[j])
+                swap(a[i],b[j]);
+            i--;
+            j++;
+        }
+        sort(a,a+n);
+        sort(b,b+m);
+        if(k>n)
+            return b[k-n-1];
+        else
+            return a[k-1];
+    }
