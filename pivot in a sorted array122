@@ -1,0 +1,46 @@
+link-http://theoryofprogramming.com/2017/12/16/find-pivot-element-sorted-rotated-array/
+code
+#include <iostream>
+using namespace std;
+int peeks(int a[],int low,int high,int lower,int higher)
+{
+	int mid=low+(high-low)/2;
+	if(mid==lower){
+		if(mid==higher)
+			return mid;
+		else if (a[mid]>=a[mid+1])
+			return mid;
+	}
+	else if(mid==higher){
+		if(a[mid]>=a[mid-1])
+			return mid;
+	}
+	else
+	{
+		if(a[mid]>=a[mid-1]&&a[mid]>=a[mid+1])
+			return mid;
+		else if(a[mid]>a[high])
+			return peeks(a, mid + 1, high, lower, higher);
+		else
+			return peeks(a,low,mid-1,lower,higher);
+	}
+	return -1;
+}
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		int n;
+		cin>>n;
+		int  a[n];
+		for(int i=0;i<n;i++)
+		{
+			cin>>a[i];
+		}
+		cout<<peeks(a,0,n-1,,0,n-1)<<endl;
+	}
+	return 0;
+}
