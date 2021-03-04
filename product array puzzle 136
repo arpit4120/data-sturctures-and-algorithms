@@ -1,0 +1,54 @@
+link-
+code
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int t;
+	 cin>>t;
+	 while(t--)
+	 {
+	 	int n;
+	 	cin>>n;
+	 	int a[n];
+	 	int s=0,p[n];
+	 	for(int i=0;i<n;i++)
+	 	{
+	 		cin>>a[i];
+	 	}
+	 	int pa=1;
+	 	for(int i=0;i<n;i++)
+	 	{
+	 		if(a[i]==0)
+	 			s++;
+	 		else
+	 			pa*=a[i];
+	 	}
+	 	if(s==1)
+	 	{
+	 		for(int i=0;i<n;i++)
+	 		{
+	 			if(a[i]==0)
+	 				p[i]=pa;
+	 			else
+	 				p[i]=0;
+	 		}
+	 	}
+	 	else if(s>1)
+	 	{
+	 		memset(p,0,sizeof(p));
+	 	}
+	 	else
+	 	{
+	 		for(int i=0;i<n;i++)
+	 		{
+	 				p[i]=pa/a[i];
+	 		}
+	 	}
+	 	for(int i=0;i<n;i++)
+	 	{
+	 		cout<<p[i]<<" ";
+	 	}
+	 	cout<<endl;
+	 }
+}
