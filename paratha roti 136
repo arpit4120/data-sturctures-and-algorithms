@@ -1,0 +1,59 @@
+link-https://www.spoj.com/submit/PRATA/id=27517122
+code
+#include <iostream>
+using namespace std;
+bool check(int *a ,int mid,int n,int r)
+{
+	int time=0;
+	int p=0;
+	for(int i=0;i<r;i++)
+	{
+		time=a[i];
+		int j=2;
+		while(time<=mid)
+		{
+			p++;
+			time+=a[i]*j;
+			j++;
+		}
+	}
+	if(p>=n)
+		return true;
+	return false;
+}
+int paratha(int *a, int n,int r)
+{
+	int lb=0;
+	int ub=1e8;
+	int ans=0;
+	while(lb<=ub)
+	{
+		int mid=(lb+ub)/2;
+		if(check(a,mid,n,r))
+		{
+			ans=mid;
+			ub=mid-1;
+		}
+		else
+		{
+			lb=mid+1;
+		}
+	}
+	return ans;
+}
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		int n,r;
+		cin>>n>>r;
+		int a[r];
+		for(int i=0;i<r;i++)
+			cin>>a[i];
+		cout<<paratha(a,n,r)<<endl;
+	}
+	return 0;
+}
