@@ -1,0 +1,32 @@
+link-https://practice.geeksforgeeks.org/problems/smallest-factorial-number5929/1
+code
+int findNum(int n)
+        {
+        //complete the function here
+        if(n==1)
+            return 5;
+        int lb=0;
+        int ub=5*n;
+        while(lb<=ub)
+        {
+            int mid=(lb+ub)/2;
+            if(check(n,mid))
+            {
+                ub=mid-1;
+            }
+            else
+                lb=mid+1;
+        }
+        return lb;
+        }
+        bool check(int n,int mid)
+        {
+            int count=0;
+            int te=mid,f=5;
+            while(f<=te)
+            {
+                count+=te/f;
+                f=f*5;
+            }
+            return (count>=n);
+        }
