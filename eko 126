@@ -1,0 +1,48 @@
+link-https://www.spoj.com/problems/EKO/
+code
+#include <iostream>
+using namespace std;
+bool check(long long int *a,long long int mid,long long int n,long long int m)
+{
+	long long int t=0;
+	for(int i=0;i<n;i++)
+	{
+		if(a[i]>mid)
+		{
+			t=t+(a[i]-mid);
+		}
+	}
+	if(t>=m)
+		return true;
+	return false;
+}
+int mirko(long long int *a,long long int n,long long int m)
+{
+	long long int lb=0;
+	long long int ub=1e8;
+	long long int ans=0;
+	while(lb<=ub)
+	{
+		int mid=(lb+ub)/2;
+ 
+		if(check(a,mid,n,m))
+		{
+			ans=mid;
+			lb=mid+1;
+		}
+		else
+			ub=mid-1;
+	}
+	return ans;
+}
+ 
+int main() {
+	// your code goes here
+	long long int n,m;
+	cin>>n>>m;
+	long long int a[n];
+	for(int i=0;i<n;i++)
+		cin>>a[i];
+	cout<<mirko(a,n,m);
+	return 0;
+}
