@@ -1,0 +1,20 @@
+link-https://practice.geeksforgeeks.org/problems/isomorphic-strings-1587115620/1
+code
+int n=str1.length();
+        int m=str2.length();
+        if(n!=m)
+            return false;
+        int a[256]={0};
+        int b[256]={0};
+        for(int i=0;i<n;i++)
+        {
+            if(a[str1[i]]!=b[str2[i]])
+                return false;
+            else
+            {
+                a[str1[i]]++;
+                b[str2[i]]++;
+            }
+        }
+        return true;
+    }
