@@ -1,0 +1,55 @@
+link-https://practice.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1
+code
+Node* reverse(Node *head)
+{
+    Node *p=NULL;
+    Node *c=head;
+    Node *n=head->next;
+    while(c!=NULL)
+    {
+        n=c->next;
+        c->next=p;
+        p=c;
+        c=n;
+        
+        
+    }
+    head=p;
+    return head;
+}
+
+class Solution
+{
+    public:
+    Node* addOne(Node *head) 
+    {
+        // Your Code here
+        // return head of list after adding one
+        head=reverse(head);
+        Node *c,*d;
+        c=head;
+        if(c->data+1==10)
+        {
+            c->data=c->data+1;
+            while(c->next!=NULL)
+            {
+                if(c->data==10)
+                {
+                    c->data=0;
+                    c->next->data=c->next->data+1;
+                    c=c->next;
+                }
+                else
+                    break;
+            }
+            
+        }
+        else
+        {
+            c->data=c->data+1;
+        }
+        head=reverse(head);
+        return head;
+       
+    }
+};
