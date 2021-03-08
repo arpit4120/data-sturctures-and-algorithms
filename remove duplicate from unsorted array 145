@@ -1,0 +1,20 @@
+link-https://practice.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1#
+code
+Node * removeDuplicates( Node *head) 
+    {
+     // your code goes here
+     Node *p=head;
+     unordered_set<int> m;
+     while(p->next!=NULL and p!=NULL)
+     {
+         m.insert(p->data);
+         int a=p->next->data;
+         if(m.find(a)!=m.end())
+         {
+             p->next=p->next->next;
+         }
+         else
+            p=p->next;
+     }
+     return head;
+    }
