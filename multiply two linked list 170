@@ -1,0 +1,21 @@
+link-https://practice.geeksforgeeks.org/problems/multiply-two-linked-lists/1#
+code
+long long  multiplyTwoLists (Node* l1, Node* l2)
+{
+  //Your code here
+  
+  long long  n=0,m=0;
+  while(l1!=NULL)
+  {
+      n=(n*10+l1->data)%1000000007;
+      l1=l1->next;
+      
+  }
+  while(l2!=NULL)
+  {
+      m=(m*10+l2->data)%1000000007;
+      l2=l2->next;
+  }
+  
+  return (n*m)%1000000007;
+}
