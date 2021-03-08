@@ -1,0 +1,35 @@
+link-https://practice.geeksforgeeks.org/problems/remove-loop-in-linked-list/1#
+code
+void removeLoop(Node* head)
+    {
+        // code here
+        // just remove the loop without losing any nodes
+        Node *p=head;
+        Node *n=head;
+        
+        while(p!=NULL and n!=NULL and n->next!=NULL)
+        {
+            p=p->next;
+            n=n->next->next;
+            if(p==n)
+                break;
+        }
+        if(p==head)
+        {
+            while(n->next!=head)
+            {
+                n=n->next;
+            }
+            n->next=NULL;
+        }
+        else if(p==n)
+        {
+            p=head;
+            while(p->next!=n->next)
+            {
+                p=p->next;
+                n=n->next;
+            }
+            n->next=NULL;
+        }
+    }
