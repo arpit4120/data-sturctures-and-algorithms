@@ -1,0 +1,17 @@
+link-https://practice.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1#
+code
+int intersectPoint(Node* head1, Node* head2)
+{
+    // Your Code Here
+    Node *p=head1,*q=head2;
+    while(head1!=head2)
+    {
+        head1=head1->next;
+        head2=head2->next;
+        if(head1==head2)return head1->data;
+        else if(head1==NULL)head1=q;
+        else if(head2==NULL)head2=p;
+    }
+    return -1;
+    
+}
