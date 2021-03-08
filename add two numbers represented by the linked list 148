@@ -1,0 +1,59 @@
+link-https://practice.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1#
+code
+Node* reverse(Node* head)
+{
+    Node *c=head;
+    Node *p=NULL,*n=NULL;
+    while(c!=NULL)
+    {
+        n=c->next;
+        c->next=p;
+        p=c;
+        c=n;
+    }
+    return p;
+}
+
+class Solution
+{
+    public:
+    struct Node* addTwoLists(struct Node* first, struct Node* second)
+    {
+        // code here
+        first=reverse(first);
+        second=reverse(second);
+        int c=0;
+        int s=0;
+        Node *st=NULL;
+        Node *e=NULL;
+        while(first!=NULL ||second!=NULL)
+        {
+            int a=(first!=NULL)?first->data:0;
+            int b=(second!=NULL)?second->data:0;
+            s=c+a+b;
+            c=(s>=10)?1:0;
+            s=s%10;
+            if(st==NULL)
+            {
+                st=new Node(s);
+                e=st;
+            }
+            else
+            {
+                e->next=new Node(s);
+                e=e->next;
+                
+            }
+            if(first!=NULL)
+                first=first->next;
+            if(second!=NULL)
+                second=second->next;
+        }
+        if(c>0)
+            e->next=new Node(c);
+        st=reverse(st);
+        return st;
+        
+    }
+    
+};
