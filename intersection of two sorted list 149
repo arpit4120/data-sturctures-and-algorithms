@@ -1,0 +1,34 @@
+link-https://practice.geeksforgeeks.org/problems/intersection-of-two-sorted-linked-lists/1#
+code
+Node* findIntersection(Node* head1, Node* head2)
+{
+    // Your Code Here
+    Node *s=NULL;
+    Node *e=NULL;
+    while(head1!=NULL&&head2!= NULL)
+    {
+        if(head1->data==head2->data)
+        {
+            if(s==NULL)
+            {
+                s=new Node(head1->data);
+                e=s;
+            }
+            else
+            {
+                e->next=new Node(head1->data);
+                e=e->next;
+            }
+            head1=head1->next;
+            head2=head2->next;
+        }
+        
+        else if(head1->data<head2->data)
+        {
+            head1=head1->next;
+        }
+        else
+            head2=head2->next;
+    }
+    return s;
+}
