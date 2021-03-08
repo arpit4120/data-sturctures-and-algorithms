@@ -1,0 +1,13 @@
+link-https://leetcode.com/problems/middle-of-the-linked-list/submissions/
+code
+ ListNode* middleNode(ListNode* head) {
+        if(head==NULL||head->next==NULL) return head;
+        ListNode*slow = head;
+        ListNode*fast = head;
+        while(fast!=NULL && fast->next!=NULL){
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    return slow;
+    }
+};
