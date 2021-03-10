@@ -1,0 +1,56 @@
+link-https://practice.geeksforgeeks.org/problems/merge-k-sorted-linked-lists/1#
+code
+Node * merge(Node *a,Node *b)
+{
+    if(a==NULL)return b;
+    else if(b==NULL)return a;
+    
+    Node *s=NULL,*e=NULL;
+    while(a!=NULL and b!=NULL)
+    {
+        if(a->data<b->data)
+        {
+            if(s==NULL)
+            {
+                s=new Node(a->data);
+                e=s;
+            }
+            else
+            {
+                e->next=new Node(a->data);
+                e=e->next;
+            }
+            a=a->next;
+        }
+        else
+        {
+            if(s==NULL)
+            {
+                s=new Node(b->data);
+                e=s;
+            }
+            else
+            {
+                e->next=new Node(b->data);
+                e=e->next;
+            }
+            b=b->next;
+            
+        }
+        if(a)e->next=a;
+        else e->next=b;
+    }
+    if(a)e->next=a;
+        else e->next=b;
+    return s;
+}
+Node * mergeKLists(Node *arr[], int k)
+{
+       // Your code here
+       Node *r=NULL;
+       for(int i=k-1;i>=0;i--)
+       {
+           r=merge(arr[i],r);
+       }
+       return r;
+}
