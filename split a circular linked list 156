@@ -1,0 +1,20 @@
+link-https://practice.geeksforgeeks.org/problems/split-a-circular-linked-list-into-two-halves/1
+code
+void splitList(Node *h, Node **h1, Node **h2)
+{
+    // your code goes here
+    Node *s=h,*f=h;
+    while(f->next!=h && f->next->next!=h)
+    {
+        s=s->next;
+        f=f->next->next;
+    }
+    (*h1)=h;
+    (*h2)=s->next;
+    s->next=h;
+    if(f->next==h)
+        f->next=(*h2);
+    else if(f->next->next==h)
+        f->next->next=(*h2);
+}
+    
