@@ -1,0 +1,23 @@
+link-https://practice.geeksforgeeks.org/problems/diameter-of-binary-tree/1
+code
+int ht(Node *node)
+{
+    if(node==NULL)
+        return 0;
+    return 1+ max(ht(node->left),ht(node->right));
+}
+class Solution
+{
+    public:
+    int diameter(Node* root) {
+    // Your code here
+    if(root==NULL)
+        return 0;
+    int o1=(ht(root->left)+ht(root->right))+1;
+    int o2=diameter(root->left);
+    int o3=diameter(root->right);
+    
+    return max(o1,max(o2,o3));
+    }
+
+};
