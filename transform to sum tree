@@ -1,0 +1,29 @@
+//https://practice.geeksforgeeks.org/problems/transform-to-sum-tree/1#
+void toSumTree(Node *node)
+    {
+        
+        if(!node)
+            return;
+        if(!node->right && !node->left)
+            node->data=0;
+            
+        else
+        {
+            int right=0,left=0;
+            if(node->left)
+            {
+                 left=node->left->data;
+                toSumTree(node->left);
+                left+=node->left->data;
+            }
+            if(node->right)
+            {
+                right=node->right->data;
+                toSumTree(node->right);
+                right+=node->right->data;
+            }
+            node->data=right+left;
+        }
+        
+       
+    }
