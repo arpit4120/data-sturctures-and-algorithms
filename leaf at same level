@@ -1,0 +1,25 @@
+//https://practice.geeksforgeeks.org/problems/leaf-at-same-level/1
+int level(Node *root ,bool &res)
+{
+    if(root)
+    {
+        if(!root->left and !root->right)
+            return 1;
+        int lr=level(root->left,res);
+        int ll=level(root->right,res);
+        if(root->left and root->right and lr!=ll)
+            res=false;
+        return 1+max(ll,lr);
+    }
+}
+class Solution{
+  public:
+    /*You are required to complete this method*/
+    bool check(Node *root)
+    {
+        //Your code here
+        bool res=true;
+        level(root,res);
+        return res;
+    }
+};
