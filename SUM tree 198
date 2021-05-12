@@ -1,0 +1,27 @@
+//https://practice.geeksforgeeks.org/problems/sum-tree/1#
+int treesum(Node* root)
+{
+    if(root==NULL)
+        return 0;
+    else if(root->left== NULL and root->right==NULL)
+    {
+        return root->data;
+    }
+    else
+    {
+        if(root->data==treesum(root->left)+treesum(root->right))
+            return 2*root->data;
+    }
+}
+class Solution
+{
+    public:
+    bool isSumTree(Node* root)
+    {
+         // Your code here
+         if(root->data*2==treesum(root))
+            return true;
+        else
+            return false;
+    }
+};
