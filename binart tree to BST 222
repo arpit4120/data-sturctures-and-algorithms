@@ -1,0 +1,35 @@
+//binart tree to BST 222
+//https://practice.geeksforgeeks.org/problems/binary-tree-to-bst/1#
+void inorder(Node* root , vector<int>&v)
+{
+    if(!root)
+        return ;
+    inorder(root->left,v);
+    v.push_back(root->data);
+    inorder(root->right,v);
+}
+void btbst(Node *root,vector<int>&v)
+{
+    if(!root)
+        return ;
+    btbst(root->left,v);
+    root->data=v.back();
+    v.pop_back();
+    btbst(root->right,v);
+}
+
+class Solution{
+  public:
+    // The given root is the root of the Binary Tree
+    // Return the root of the generated BST
+    Node *binaryTreeToBST (Node *root)
+    {
+        //Your code goes here
+        vector<int> v;
+        inorder(root, v);
+        sort(v.begin(), v.end());
+        reverse(v.begin(), v.end());
+        btbst(root, v);
+        return root;
+    }
+};
