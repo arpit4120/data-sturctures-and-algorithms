@@ -1,0 +1,26 @@
+//https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
+void inorder(Node *root, vector<int>&v)
+{
+    if(!root)
+        return ;
+    inorder(root->left,v);
+    v.push_back(root->data);
+    inorder(root->right,v);
+}
+
+// return the Kth largest element in the given BST rooted at 'root'
+class Solution
+{
+    public:
+    int kthLargest(Node *root, int K)
+    {
+        //Your code here
+        if(!root)
+            return 0;
+        vector<int> v;
+        inorder(root,v);
+        reverse(v.begin(),v.end());
+        return v[K-1];
+        
+    }
+};
