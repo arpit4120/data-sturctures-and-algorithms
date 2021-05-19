@@ -1,0 +1,15 @@
+//check weather BST conatins dead end
+//https://practice.geeksforgeeks.org/problems/check-whether-bst-contains-dead-end/1#
+bool dead(Node *root ,int min,int max)
+{
+    if(!root)
+        return false ;
+    if(max==min)
+        return true;
+    return dead(root->left,min,root->data-1) | dead(root->right,root->data+1,max);
+}
+bool isDeadEnd(Node *root)
+{
+    //Your code here
+    return dead(root,1,INT_MAX);
+}
