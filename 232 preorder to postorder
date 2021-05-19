@@ -1,0 +1,28 @@
+//232 preorder to postorder
+//https://practice.geeksforgeeks.org/problems/preorder-to-postorder4423/1#
+Node* construct(int pre[],int i,int j)
+{
+    if(i<=j)
+    {
+        Node *temp= newNode(pre[i]);
+        int mid=j+1;
+        for(int k=i+1;k<=j;k++)
+        {
+            if(pre[k]>=pre[i])
+            {
+                mid=k;
+                break;
+            }
+        }
+        temp->left=construct(pre,i+1,mid-1);
+        temp->right=construct(pre,mid,j);
+        return temp;
+        
+    }
+    return NULL;
+}
+Node* constructTree(int pre[], int size)
+{
+    //code here
+    return construct(pre,0,size-1);
+}
