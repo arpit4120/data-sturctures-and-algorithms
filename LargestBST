@@ -1,0 +1,29 @@
+//LargestBST
+//https://practice.geeksforgeeks.org/problems/largest-bst/1
+bool isbst(Node *root,int min,int max)
+{
+    if(!root)
+        return true;
+    if(root->data<min||root->data>max)
+        return false;
+    return isbst(root->left,min,root->data-1) and isbst(root->right,root->data+1,max);
+}
+int traversal(Node *root,int &ans)
+{
+    if(!root)
+        return 0;
+    int ts=traversal(root->left,ans);
+    int tr=traversal(root->right,ans);
+    if(isbst(root,INT_MIN,INT_MAX))
+        ans=max(ans,tr+ts+1);
+    return tr+ts+1;
+}
+int largestBst(Node *root)
+{
+	//Your code here
+	
+	int ans=0;
+	traversal(root,ans);
+	return ans;
+	
+}
