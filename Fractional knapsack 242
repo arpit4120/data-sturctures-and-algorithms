@@ -1,0 +1,28 @@
+//Fractional knapsack 242
+//https://practice.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1#
+
+double fractionalKnapsack(int W, Item arr[], int n)
+    {
+        // Your code here
+        sort(arr,arr+n,cmp);
+        double ans=0;
+        int curr=0;
+        int i=0;
+        while(i<n)
+        {
+            if ( arr[i].weight <= W)
+            {
+                W-= arr[i].weight;
+                ans += arr[i].value;
+                i++;
+            }
+            else
+            {
+                ans += arr[i].value * ((double) W / arr[i].weight);
+                break;
+            }
+            
+        }
+        
+        return ans;
+    }
