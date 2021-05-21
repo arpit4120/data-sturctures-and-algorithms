@@ -1,0 +1,39 @@
+//minimum and maximum candy  247
+//https://practice.geeksforgeeks.org/problems/shop-in-candy-store1145/1#
+ int mini(int a[],int n,int k)
+    {
+        int i=0,j=n-1;
+        int c=0;
+        while(i<=j)
+        {
+            c+=a[i];
+            i++;
+            j=j-k;
+        }
+        return c;
+    }
+    int maxi(int a[],int n,int k)
+    {
+        int c=0;
+        int i=0,j=n-1;
+        while(j>=i)
+        {
+            c+=a[j];
+            j--;
+            i=i+k;
+        }
+        return c;
+    }
+public:
+    vector<int> candyStore(int candies[], int N, int K)
+    {
+        // Write Your Code here
+        vector<int>ans;
+        sort(candies,candies+N);
+        int min=mini(candies,N,K);
+        int max=maxi(candies,N,K);
+        ans.push_back(min);
+        ans.push_back(max);
+        return ans;
+    }
+};
