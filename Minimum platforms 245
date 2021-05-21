@@ -1,0 +1,31 @@
+//Minimum platforms 245
+//https://practice.geeksforgeeks.org/problems/minimum-platforms-1587115620/1
+int findPlatform(int arr[], int dep[], int n)
+    {
+    	// Your code here
+    	multimap<int,int>m;
+    	for(int i=0;i<n;i++)
+    	{
+    	    m.insert({arr[i],1});
+    	}
+    	for(int i=0;i<n;i++)
+    	{
+    	    m.insert({dep[i],0});
+    	}
+    	int ans=-1;
+    	int count=0;
+    	for(auto x:m)
+    	{
+    	    if(x.second==1)
+    	    {
+    	        count++;
+    	        ans=max(ans,count);
+    	    }
+    	    else
+    	    {
+    	        count--;
+    	        ans=max(ans,count);
+    	    }
+    	}
+    	return ans;
+    }
