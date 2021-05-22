@@ -1,0 +1,14 @@
+//Maximise sum(a[i]*i) of an array254
+//https://practice.geeksforgeeks.org/problems/maximize-arrii-of-an-array0026/1
+int Maximize(int a[],int n)
+    {
+        // Complete the function
+        sort(a,a+n);
+        long long int ans=0;
+        long long int mod=1e9+7;
+        for(int i=0;i<n;i++)
+        {
+            ans+=(((long long)a[i]*i)%mod)%mod;
+        }
+        return (int)(ans%mod);
+    }
