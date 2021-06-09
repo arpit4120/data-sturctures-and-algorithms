@@ -1,0 +1,38 @@
+//partition sum equal subset dp417
+//https://practice.geeksforgeeks.org/problems/subset-sum-problem2014/1#
+
+int equalPartition(int n, int a[])
+    {
+        // code here
+        int sum=0;
+        for(int i=0;i<n;i++)
+            sum+=a[i];
+        if(sum%2!=0)
+            return 0;
+        if(sum<0 or n==0)
+            return 0;
+        if(sum==0)
+            return 1;
+        bool dp[n+1][sum/2+1];
+        for(int i=0;i<=n;i++)
+        {
+            for(int j=0;j<=sum/2;j++)
+            {
+                if(i==0 and j==0)
+                    dp[i][j]=true;
+                else if(j==0)
+                    dp[i][j]=true;
+                else if(i==0)
+                    dp[i][j]=false;
+                else
+                {
+                    if(j>=a[i-1])
+                    dp[i][j]=dp[i-1][j] or dp[i-1][j-a[i-1]];
+                    else 
+                    dp[i][j]=dp[i-1][j];
+                }
+            }
+        }
+        return dp[n][sum/2];
+        
+    }
