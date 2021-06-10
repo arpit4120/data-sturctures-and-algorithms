@@ -1,0 +1,23 @@
+//Maximum sum increasing subset dp  428
+int maxSumIS(int a[], int n)  
+	{  
+	    // Your code goes here
+	    int dp[n+1]={0};
+	    int r=a[0];
+	    dp[0]=a[0];
+	    for(int i=1;i<n;i++)
+	    {
+	        int k=a[i];
+	        dp[i]=a[i];
+	        for(int j=0;j<i;j++)
+	        {
+	            if(k>a[j])
+	            {
+	                dp[i]=max(a[i]+dp[j],dp[i]);
+	               
+	            }
+	        }
+	        r=max(r,dp[i]);
+	    }
+	   return r;
+	}  
