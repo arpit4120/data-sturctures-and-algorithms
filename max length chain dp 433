@@ -1,0 +1,23 @@
+//max length chain dp 433
+bool cmp(struct val v1,struct val v2)
+{
+    return v1.second<v2.second;
+}
+int maxChainLen(struct val p[],int n)
+{
+//Your code here
+    int dp[n]={1};
+    sort(p,p+n,cmp);
+    int res=1;
+    for(int i=1;i<n;i++)
+    {
+        
+        for(int j=0;j<i;j++)
+        {
+            if(p[i].first>p[j].second and dp[i]<dp[j]+1)
+                dp[i]=dp[j]+1;
+        }
+        res=max(res,dp[i]);
+    }
+    return (res!=0)?res:1;
+}
