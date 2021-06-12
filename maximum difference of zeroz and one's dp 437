@@ -1,0 +1,15 @@
+//maximum difference of zeroz and one's dp 437
+int maxSubstring(string s)
+	{
+	    // Your code goes here
+	    int sum=0;
+	    int maxi=INT_MIN;
+	    for(int i=0;i<s.length();i++)
+	    {
+	        int x=(s[i]=='0')?1:-1;
+	        sum+=x;
+	        maxi=max(maxi,sum);
+	        if(sum<0)sum=0;
+	    }
+	    return maxi;
+	}
