@@ -1,0 +1,13 @@
+//knapsack with duplicate items dp 446
+    int knapSack(int n, int w, int val[], int wt[])
+    {
+        // code here
+        int dp[w+1]={0};
+        dp[0]=0;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=wt[i];j<=w;j++)
+                dp[j]=max(dp[j],dp[j-wt[i]]+val[i]);
+        }
+        return dp[w];
+    }
