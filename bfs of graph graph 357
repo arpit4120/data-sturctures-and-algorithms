@@ -1,0 +1,26 @@
+//bfs of graph graph 357
+vector<int> bfsOfGraph(int v, vector<int> adj[])
+	{
+	    // Code here
+	    vector<bool>z(v,false);
+	    vector<int>ans;
+	    queue<int>q;
+	    q.push(0);
+	    while(!q.empty())
+	    {
+	        int x=q.front();
+	        q.pop();
+	        z[x]=true;
+	        ans.push_back(x);
+	        for(auto a:adj[x])
+	        {
+	            if(z[a]==false)
+	            {
+	                q.push(a);
+	                z[a]=true;
+	            }
+	        }
+	    }
+	    
+	    return ans;
+	}
