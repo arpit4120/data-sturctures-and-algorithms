@@ -1,0 +1,29 @@
+//rat in a maze problem graph all paths 361
+void help(vector<vector<int>>m,int n, int i,int j,vector<string>&ans,string s)
+{
+    if(i<0 or i>=n or j<0 or j>=n or m[i][j]!=1)
+        return ;
+    if(i==n-1 and j==n-1)
+    {
+        ans.push_back(s);
+        return;
+    }
+    m[i][j]=-1;
+    help(m,n,i+1,j,ans,s+'D');
+    help(m,n,i,j+1,ans,s+'R');
+    help(m,n,i-1,j,ans,s+'U');
+    help(m,n,i,j-1,ans,s+'L');
+    m[i][j]=1;
+    
+}
+class Solution{
+    public:
+    vector<string> findPath(vector<vector<int>> &m, int n) {
+        // Your code goes here
+        vector<string>ans;
+        string s="";
+        help(m,n,0,0,ans,s);
+        sort(ans.begin(),ans.end());
+        return ans;
+    }
+};
